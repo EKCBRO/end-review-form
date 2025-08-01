@@ -17,7 +17,8 @@
       height: 100vh;
       flex-direction: column;
     }
-    /* .logo {
+    /*
+    .logo {
       position: absolute;
       top: 30px;
       left: 40px;
@@ -43,7 +44,8 @@
     .logo .college {
       color: #b03d91;
       font-weight: normal;
-    } */
+    }
+    */
     .form-box {
       background: #ffffff;
       padding: 40px 30px;
@@ -58,17 +60,27 @@
     }
     input[type="text"],
     input[type="email"],
-    textarea {
+    textarea,
+    select {
       width: 100%;
       padding: 12px 10px;
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
+      background-color: white;
       resize: vertical;
+      cursor: pointer;
     }
     textarea {
       min-height: 80px;
+    }
+    label[for="rating"] {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #333;
+      text-align: left;
     }
     button {
       background-color: #b03d91;
@@ -97,44 +109,3 @@
 </head>
 <body>
 
-  <!--
-  <div class="logo">
-    <span>
-      Broadstairs<br><span class="college">College</span>
-    </span>
-  </div>
--->
-
-
-  <div class="form-box">
-    <h2>End of Placement Review Form</h2>
-    <form id="review-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <label for="rating">Overall Rating for Student</label>
-      <select id="rating" name="rating" required>
-        <option value="" disabled selected>select</option>
-        <option value="excellent">Excellent</option>
-        <option value="good">Good</option>
-        <option value="poor">Poor</option>
-      </select>
-
-      <textarea name="reason" placeholder="Constructive feedback for student" required></textarea>
-      
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <div class="footer">
-    Questions? Contact us <a href="mailto:dan.eales@ekcgroup.ac.uk">using this email</a>
-  </div>
-
-  <script>
-    document.getElementById('review-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Form submitted! Implement your submit logic here.');
-    });
-  </script>
-
-</body>
-</html>
