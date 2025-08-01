@@ -27,7 +27,7 @@
       font-weight: 600;
       color: #444;
     }
-    select, input[type="email"], textarea {
+    input[type="text"], input[type="email"], textarea {
       width: 100%; padding: 12px 10px; margin: 10px 0 0 0;
       border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
       resize: vertical;
@@ -51,9 +51,7 @@
     <h2>End of Placement Review Form</h2>
     <form id="review-form">
       <label for="student-name">Student Name</label>
-      <select id="student-name" name="student-name" required>
-        <option value="" disabled selected>Select student</option>
-      </select>
+      <input type="text" id="student-name" name="student-name" placeholder="Enter student name" required />
 
       <label for="email">Your Email</label>
       <input type="email" id="email" name="email" placeholder="Your Email" required />
@@ -74,32 +72,23 @@
   </div>
 
   <script>
-    function populateStudentDropdown() {
+    // Prefill the student name input from URL parameter 'student'
+    function prefillStudentName() {
       const urlParams = new URLSearchParams(window.location.search);
-      const studentsParam = urlParams.get('students');
-      const select = document.getElementById('student-name');
-
-      if (studentsParam) {
-        const students = studentsParam.split(',');
-        students.forEach(name => {
-          const trimmedName = name.trim();
-          if (trimmedName) {
-            const option = document.createElement('option');
-            option.value = trimmedName;
-            option.textContent = trimmedName;
-            select.appendChild(option);
-          }
-        });
+      const studentName = urlParams.get('student');
+      if (studentName) {
+        document.getElementById('student-name').value = studentName;
       }
     }
 
-    window.addEventListener('DOMContentLoaded', populateStudentDropdown);
+    window.addEventListener('DOMContentLoaded', prefillStudentName);
 
+    // On submit, create mailto link with form data and open email client
     document.getElementById('review-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const form = e.target;
-      const studentName = form['student-name'].value;
+      const studentName = form['student-name'].value.trim();
       const email = form.email.value.trim();
       const rating = form.rating.value;
       const reason = form.reason.value.trim();
@@ -115,5 +104,6 @@
 
 </body>
 </html>
+
 
 
