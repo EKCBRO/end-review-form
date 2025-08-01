@@ -17,7 +17,7 @@
       height: 100vh;
       flex-direction: column;
     }
-    .logo {
+    /* .logo {
       position: absolute;
       top: 30px;
       left: 40px;
@@ -43,7 +43,7 @@
     .logo .college {
       color: #b03d91;
       font-weight: normal;
-    }
+    } */
     .form-box {
       background: #ffffff;
       padding: 40px 30px;
@@ -97,25 +97,36 @@
 </head>
 <body>
 
+  <!--
   <div class="logo">
     <span>
       Broadstairs<br><span class="college">College</span>
     </span>
   </div>
+-->
+
 
   <div class="form-box">
-    <h2>End of Review Form</h2>
+    <h2>End of Placement Review Form</h2>
     <form id="review-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="reason" placeholder="Reason for Submission" required></textarea>
+      <label for="rating">Overall Rating for Student</label>
+      <select id="rating" name="rating" required>
+        <option value="" disabled selected>select</option>
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="poor">Poor</option>
+      </select>
+
+      <textarea name="reason" placeholder="Constructive feedback for student" required></textarea>
       
       <button type="submit">Submit</button>
     </form>
   </div>
 
   <div class="footer">
-    Questions? Contact us <a href="mailto:admin@broadstairscollege.ac.uk">using this email</a>
+    Questions? Contact us <a href="mailto:dan.eales@ekcgroup.ac.uk">using this email</a>
   </div>
 
   <script>
