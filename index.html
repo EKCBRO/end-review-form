@@ -72,18 +72,6 @@
   </div>
 
   <script>
-    // Prefill the student name input from URL parameter 'student'
-    function prefillStudentName() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const studentName = urlParams.get('student');
-      if (studentName) {
-        document.getElementById('student-name').value = studentName;
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', prefillStudentName);
-
-    // On submit, create mailto link with form data and open email client
     document.getElementById('review-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -104,6 +92,7 @@
 
 </body>
 </html>
+
 
 
 
