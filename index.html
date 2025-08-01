@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>End of Placement Review Form</title>
   <style>
-    /* Your existing styles here */
     * { box-sizing: border-box; }
     body {
       margin: 0; font-family: 'Segoe UI', sans-serif;
@@ -21,17 +20,27 @@
       text-align: center;
     }
     h2 { margin-bottom: 30px; color: #333; }
-    input[type="text"], input[type="email"], select, textarea {
-      width: 100%; padding: 12px 10px; margin: 10px 0;
+    label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      font-weight: 600;
+      color: #444;
+    }
+    select, input[type="email"], textarea {
+      width: 100%; padding: 12px 10px; margin: 10px 0 0 0;
       border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
       resize: vertical;
+      font-family: 'Segoe UI', sans-serif;
     }
+    textarea { min-height: 80px; }
     button {
       background-color: #b03d91;
       color: white; border: none;
       padding: 12px; width: 100%;
       border-radius: 6px; font-size: 16px;
       cursor: pointer; transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
     button:hover { background-color: #8a2c6d; }
   </style>
@@ -41,46 +50,70 @@
   <div class="form-box">
     <h2>End of Placement Review Form</h2>
     <form id="review-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      
+      <label for="student-name">Student Name</label>
+      <select id="student-name" name="student-name" required>
+        <option value="" disabled selected>Select student</option>
+      </select>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+
       <label for="rating">Overall Rating for Student</label>
       <select id="rating" name="rating" required>
-        <option value="" disabled selected>select</option>
+        <option value="" disabled selected>Select</option>
         <option value="Excellent">Excellent</option>
         <option value="Good">Good</option>
         <option value="Poor">Poor</option>
       </select>
 
-      <textarea name="reason" placeholder="Constructive feedback for student" required></textarea>
-      
-      <button type="submit">submit via email</button>
+      <label for="reason">Constructive feedback for student</label>
+      <textarea id="reason" name="reason" placeholder="Constructive feedback for student" required></textarea>
+
+      <button type="submit">Submit</button>
     </form>
   </div>
 
   <script>
+    function populateStudentDropdown() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const studentsParam = urlParams.get('students');
+      const select = document.getElementById('student-name');
+
+      if (studentsParam) {
+        const students = studentsParam.split(',');
+        students.forEach(name => {
+          const trimmedName = name.trim();
+          if (trimmedName) {
+            const option = document.createElement('option');
+            option.value = trimmedName;
+            option.textContent = trimmedName;
+            select.appendChild(option);
+          }
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', populateStudentDropdown);
+
     document.getElementById('review-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const form = e.target;
-      const name = form.name.value.trim();
+      const studentName = form['student-name'].value;
       const email = form.email.value.trim();
       const rating = form.rating.value;
       const reason = form.reason.value.trim();
 
-      // Compose mailto URL
-      const mailto = `mailto:dan.eales@ekcgroup.ac.uk?subject=Placement Review from ${encodeURIComponent(name)}&body=` +
+      const mailto = `mailto:dan.eales@ekcgroup.ac.uk?subject=Placement Review for ${encodeURIComponent(studentName)}&body=` +
         encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nOverall Rating: ${rating}\n\nConstructive Feedback:\n${reason}`
+          `Student Name: ${studentName}\nEmail: ${email}\nOverall Rating: ${rating}\n\nConstructive Feedback:\n${reason}`
         );
 
-      // Open email client
       window.location.href = mailto;
     });
   </script>
 
 </body>
 </html>
-
 
 
