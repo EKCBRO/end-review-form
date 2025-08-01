@@ -6,10 +6,14 @@
   <style>
     * { box-sizing: border-box; }
     body {
-      margin: 0; font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #f6f6f6;
-      display: flex; justify-content: center; align-items: center;
-      height: 100vh; flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
     .form-box {
       background: #fff;
@@ -19,7 +23,10 @@
       width: 360px;
       text-align: center;
     }
-    h2 { margin-bottom: 30px; color: #333; }
+    h2 {
+      margin-bottom: 30px;
+      color: #333;
+    }
     label {
       display: block;
       margin-top: 10px;
@@ -27,22 +34,41 @@
       font-weight: 600;
       color: #444;
     }
-    input[type="text"], input[type="email"], textarea {
-      width: 100%; padding: 12px 10px; margin: 10px 0 0 0;
-      border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
-      resize: vertical;
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 10px;
+      margin: 10px 0 0 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
       font-family: 'Segoe UI', sans-serif;
+      resize: vertical;
+      background-color: white;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
-    textarea { min-height: 80px; }
+    textarea {
+      min-height: 80px;
+    }
     button {
       background-color: #b03d91;
-      color: white; border: none;
-      padding: 12px; width: 100%;
-      border-radius: 6px; font-size: 16px;
-      cursor: pointer; transition: background-color 0.3s ease;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       margin-top: 20px;
     }
-    button:hover { background-color: #8a2c6d; }
+    button:hover {
+      background-color: #8a2c6d;
+    }
   </style>
 </head>
 <body>
@@ -92,6 +118,8 @@
 
 </body>
 </html>
+
+
 
 
 
