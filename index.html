@@ -17,35 +17,6 @@
       height: 100vh;
       flex-direction: column;
     }
-    /*
-    .logo {
-      position: absolute;
-      top: 30px;
-      left: 40px;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
-    .logo::before {
-      content: '';
-      width: 0; 
-      height: 0; 
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-bottom: 20px solid #b03d91;
-      transform: rotate(-45deg);
-      margin-right: 10px;
-    }
-    .logo span {
-      display: block;
-      line-height: 1;
-    }
-    .logo .college {
-      color: #b03d91;
-      font-weight: normal;
-    }
-    */
     .form-box {
       background: #ffffff;
       padding: 40px 30px;
@@ -108,4 +79,39 @@
   </style>
 </head>
 <body>
+
+  <div class="form-box">
+    <h2>End of Placement Review Form</h2>
+    <form id="review-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+
+      <label for="rating">Overall Rating for Student</label>
+      <select id="rating" name="rating" required>
+        <option value="" disabled selected>select</option>
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="poor">Poor</option>
+      </select>
+
+      <textarea name="reason" placeholder="Constructive feedback for student" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    Questions? Contact us <a href="mailto:dan.eales@ekcgroup.ac.uk">using this email</a>
+  </div>
+
+  <script>
+    document.getElementById('review-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Form submitted! Implement your submit logic here.');
+    });
+  </script>
+
+</body>
+</html>
+
 
