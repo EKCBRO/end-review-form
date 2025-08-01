@@ -2,80 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Form Title</title>
+  <title>End of Placement Review Form</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    /* Your existing styles here */
+    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0; font-family: 'Segoe UI', sans-serif;
       background-color: #f6f6f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; flex-direction: column;
     }
     .form-box {
-      background: #ffffff;
+      background: #fff;
       padding: 40px 30px;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       width: 360px;
       text-align: center;
     }
-    h2 {
-      margin-bottom: 30px;
-      color: #333;
-    }
-    input[type="text"],
-    input[type="email"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 12px 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      background-color: white;
+    h2 { margin-bottom: 30px; color: #333; }
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%; padding: 12px 10px; margin: 10px 0;
+      border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
       resize: vertical;
-      cursor: pointer;
-    }
-    textarea {
-      min-height: 80px;
-    }
-    label[for="rating"] {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-      color: #333;
-      text-align: left;
     }
     button {
       background-color: #b03d91;
-      color: white;
-      border: none;
-      padding: 12px;
-      width: 100%;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      color: white; border: none;
+      padding: 12px; width: 100%;
+      border-radius: 6px; font-size: 16px;
+      cursor: pointer; transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #8a2c6d;
-    }
-    .footer {
-      margin-top: 20px;
-      font-size: 13px;
-      color: #666;
-    }
-    .footer a {
-      color: #b03d91;
-      text-decoration: none;
-    }
+    button:hover { background-color: #8a2c6d; }
   </style>
 </head>
 <body>
@@ -85,13 +43,13 @@
     <form id="review-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-
+      
       <label for="rating">Overall Rating for Student</label>
       <select id="rating" name="rating" required>
         <option value="" disabled selected>select</option>
-        <option value="excellent">Excellent</option>
-        <option value="good">Good</option>
-        <option value="poor">Poor</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Poor">Poor</option>
       </select>
 
       <textarea name="reason" placeholder="Constructive feedback for student" required></textarea>
@@ -100,18 +58,29 @@
     </form>
   </div>
 
-  <div class="footer">
-    Questions? Contact us <a href="mailto:dan.eales@ekcgroup.ac.uk">using this email</a>
-  </div>
-
   <script>
     document.getElementById('review-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Form submitted! Implement your submit logic here.');
+
+      const form = e.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const rating = form.rating.value;
+      const reason = form.reason.value.trim();
+
+      // Compose mailto URL
+      const mailto = `mailto:dan.eales@ekcgroup.ac.uk?subject=Placement Review from ${encodeURIComponent(name)}&body=` +
+        encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nOverall Rating: ${rating}\n\nConstructive Feedback:\n${reason}`
+        );
+
+      // Open email client
+      window.location.href = mailto;
     });
   </script>
 
 </body>
 </html>
+
 
 
